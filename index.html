@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0c14">
+  <title>AZLM · Links</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0c14;
+      --card: rgba(255, 255, 255, 0.045);
+      --card-hover: rgba(255, 255, 255, 0.07);
+      --line: rgba(255, 255, 255, 0.09);
+      --txt: #f2f3f7;
+      --muted: rgba(242, 243, 247, 0.55);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--txt);
+      min-height: 100svh;
+      display: flex;
+      padding: 48px 20px 40px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Ambient background glows */
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(620px 420px at 12% 8%,  rgba(124, 58, 237, 0.17), transparent 62%),
+        radial-gradient(720px 520px at 88% 92%, rgba(34, 211, 238, 0.11), transparent 62%),
+        radial-gradient(500px 360px at 80% 6%,  rgba(226, 35, 26, 0.08),  transparent 60%);
+      animation: drift 14s ease-in-out infinite alternate;
+    }
+
+    @keyframes drift {
+      from { transform: translateY(0)    scale(1); }
+      to   { transform: translateY(-14px) scale(1.03); }
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 430px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Profile header */
+    .profile { text-align: center; margin-bottom: 30px; }
+
+    .avatar {
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      background: linear-gradient(145deg, #161827, #0e0f1a);
+      border: 2px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 0 26px -6px rgba(124, 58, 237, 0.55);
+    }
+
+    h1 { font-size: 1.7rem; font-weight: 700; letter-spacing: 0.04em; }
+    .tagline { margin-top: 6px; font-size: 0.9rem; color: var(--muted); }
+
+    /* Link buttons */
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      width: 100%;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      color: var(--txt);
+      text-decoration: none;
+      transition: transform 0.18s ease, border-color 0.18s ease,
+                  box-shadow 0.18s ease, background 0.18s ease;
+      animation: fadeUp 0.5s ease backwards;
+    }
+
+    .link-btn:nth-child(2) { animation-delay: 0.08s; }
+    .link-btn:nth-child(3) { animation-delay: 0.16s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .link-btn:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: 0 14px 34px -12px var(--glow);
+      background: var(--card-hover);
+    }
+
+    .link-btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .num {
+      flex: 0 0 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 1.25rem;
+      background: var(--badge);
+      box-shadow: 0 0 20px -6px var(--glow);
+    }
+
+    .texts { display: flex; flex-direction: column; min-width: 0; }
+
+    .label {
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .sub {
+      margin-top: 3px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sub svg { width: 14px; height: 14px; color: var(--accent); flex: 0 0 auto; }
+    .sub svg.fill { fill: var(--accent); }
+
+    .arrow {
+      margin-left: auto;
+      flex: 0 0 auto;
+      color: rgba(255, 255, 255, 0.4);
+      transition: color 0.18s ease, transform 0.18s ease;
+    }
+
+    .link-btn:hover .arrow {
+      color: var(--accent);
+      transform: translate(2px, -2px);
+    }
+
+    .foot {
+      margin-top: 24px;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.35);
+      letter-spacing: 0.06em;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <header class="profile">
+      <div class="avatar" aria-hidden="true">🎮</div>
+      <h1>AZLM</h1>
+      <p class="tagline">Azure Latch MODDED · all my links</p>
+    </header>
+
+    <!-- ============================================================
+         ✏️  EDIT YOUR LINKS HERE
+         • To change where a button goes: edit its href="..." below
+         • To change what it says: edit the text inside <span class="label">
+         • Buttons always open in a new tab
+         ============================================================ -->
+    <nav class="links" aria-label="Important links">
+
+      <a class="link-btn"
+         style="--accent:#ff5a5a; --badge:linear-gradient(135deg,#ff7a5c,#e2231a); --glow:rgba(255,90,90,0.35)"
+         href="https://www.roblox.com/games/90317601637041/Azure-Latch-MODDED"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="AZLM — Roblox game (opens in a new tab)">
+        <span class="num">1</span>
+        <span class="texts">
+          <span class="label">AZLM</span>
+          <span class="sub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg>
+            Roblox Game
+          </span>
+        </span>
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+      </a>
+
+      <a class="link-btn"
+         style="--accent:#38bdf8; --badge:linear-gradient(135deg,#4cc2ff,#0074bd); --glow:rgba(56,189,248,0.30)"
+         href="https://www.roblox.com/communities/35841544/ModdedGG#!/about"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="MODDED.GG — Roblox group (opens in a new tab)">
+        <span class="num">2</span>
+        <span class="texts">
+          <span class="label">MODDED.GG</span>
+          <span class="sub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Roblox Group
+          </span>
+        </span>
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+      </a>
+
+      <a class="link-btn"
+         style="--accent:#7c86ff; --badge:linear-gradient(135deg,#8b95f8,#5865F2); --glow:rgba(88,101,242,0.35)"
+         href="https://discord.gg/9AVBvtrS2F"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="AZLM.GG — Discord server (opens in a new tab)">
+        <span class="num">3</span>
+        <span class="texts">
+          <span class="label">AZLM.GG</span>
+          <span class="sub">
+            <svg class="fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg>
+            Discord Server
+          </span>
+        </span>
+        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+      </a>
+
+    </nav>
+
+    <footer class="foot">azlm.gg</footer>
+  </main>
+</body>
+</html>
